@@ -12,3 +12,6 @@ The topics to be covered in this section are as follows: -
 7. Exercises
 
 Since this is mainly a theory based chapter the only content present will be either links to blog articles or notebooks with theory, pictures and code snippets.
+
+
+### 1. What is machine learning?
