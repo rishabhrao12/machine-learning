@@ -196,15 +196,26 @@ An important thing to remember is "garbage in, garbage out". Your system will on
 
 #### 5.2.1 Overfitting the Training Data
 
+Overfitting is a scenario where your algorithm performs very well on training data but not on testing data. This means that the algorithm cannot generalise well to unseen cases. This usually happens when the algorithm is too complex and it finds patters in the noise rather than in the actual data itself. To prevent this from happening we can perform the following steps:
+1. Simplify the model to one with fewer parameters
+2. Gather more training data
+3. Reduce the noise in the training data (e.g. fix data errors and remove outliers)
 
+Constraining a model to make it simpler and reduce the risk of overfitting is called regularisation. We need to find the right balance between fitting the training data well and keeping the model simple enough to ensure it will generalise well. The amount of regularisation to apply during learning can be controlled using a hyperparameter. 
+If set to a large value you will get almost a flat model (a slope close to zero); the model will almost certainly not overfit the data but, it will be less likely to find a good solution.
 
 #### 5.2.2 Underfitting the Training Data
 
-
+Underfitting is the opposite of overfitting. It occurs when the model is too simple to lern the underlying structure of the data, For example a linear model of life satisfaction is prone to underfit; as reality is more complx than the model so its predictions are inaccurate even on training data. Here are some examples: -
+1. Select a more powerful model, with more parameters
+2. Feed better features to the learning algorithm (feature engineering)
+3. Reduce the constraints on the model (e.g. reduce the regularisation hyperparameter).
 
 ## 6. Testing and Validating
 
-
+The only way to know how well a model will generalise to new cases is to actually try it out on new cases. One way to do this is to put the model into production and see how it performs. This works well but if your model is bad the users will notice and complain.
+A better option is to split the dataset into two sets, the training and test set. As implied you train the model using the training set and test it using the test set. The error rate on the new cases is called the generalisation error (or out-of-sample error) and by evaluating the model on test set you get an estimate of this error.This value tells you how well your model will peform on instancesit has never seen before.
+If training error is low and generalisation error is high it means your model is overfitting the training data. it is common to use 80% of the data for training and 20% for testing. This however depends on size of the dataset. If the dataset has millions of samples even 1% for testing would be enough.
 
 ### 6.1 Hyperparameter Tuning and Model Selection
 
