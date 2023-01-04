@@ -109,43 +109,108 @@ Some important unsupervised learning algorithms are as follows: -
 
 **Visualisation**: These algorithms are also good examples of unsupervised learning: you feed them a lot of complex and unlabelled data and they output 2D and 3D representation of your data that can be easily plotted. They try to preserve as much structure as possible (try to keep different clusters in the input space from overlapping in the visualisation) so that you can understand hpw the data is organised and perhaps identify unsuspected patterns.
 
-**Dimensionality Reduction**: A related task is dimensionality reduction in which the goal is to siplify the data without losing too much information, for example if you have the data of a car, and you have attributes for the mileage and age, you could say that these are related and so the algorithm will reduce it to a single attribute indicating the cars wear and tear. It is good oractice to put data through such an algorithm before feeding it to another algorithm (such as a classification algorithm), this reduces time required to train and could also improve performance.
+**Dimensionality Reduction**: A related task is dimensionality reduction in which the goal is to simplify the data without losing too much information, for example if you have the data of a car, and you have attributes for the mileage and age, you could say that these are related and so the algorithm will reduce it to a single attribute indicating the cars wear and tear. It is good oractice to put data through such an algorithm before feeding it to another algorithm (such as a classification algorithm), this reduces time required to train and could also improve performance.
 
 **Anomaly Detection**: if we want to detect some anomalies, such as unusual credit card transactions to prevent fraud, or certain manufacturing defects, or remove outliers in data before feeding dataset to another algorithm we use this method. The system is shown **mostly normal** instances during training so that it can learn to recognise them, thus when it sees a new instance it ca tell whether this instance is normal or an anomaly.
 
 **Novelty Detection**: if we want to detect new instances that are different from the normal ones we use this method, the major difference is that the training dataset **must not** contain any of the new instances unlike in anomaly detection where some anomalies could be present in the dataset. For example if you want to detect pictures of a pug as a new instance your dataset should not contain any pictures of pugs rather it should have other dogs pictures otherwise it won't treat the pug as a new instance.
 
-**Association Rule Learning**: in this task, the goal is to dig into large amounts of data and discover interesting relations between attriibutes. E.g. if you own a supermarket, running an association rule on your sales logs may reveal that people who purchase barbecue sauce and potato chips also buy steak. These items can then be kept close to each other.
+**Association Rule Learning**: in this task, the goal is to dig into large amounts of data and discover interesting relations between attributes. E.g. if you own a supermarket, running an association rule on your sales logs may reveal that people who purchase barbecue sauce and potato chips also buy steak. These items can then be kept close to each other.
 
 #### 4.1.3 Semi-supervised Learning
 
-
+Labelling data can be a very time-consuming task, often datasets will have a large number of unlabelled instances and a few labelled instances. There are however some algorithms that can deal with data that is partially labelled. This is called semi supervised learning. For example the photos' app on your phone could recognise that person A appears in certain photos and person B appears in certain photos this is an example of dealing with unlabelled data i.e. clustering, all you need to do is give one label then to ech person.
+Most semi-supervised learning algorithms are combinations of supervised and unsupervised algorithms e.g. deep belief networks (DBNs) are based on unsupervised components called restricted Boltzmann machines (RBMs) stacked on top of each other. RBMs are trained sequentially in an unsupervised manner and then the whole system is fine-tuned using supervised learning techniques.
 
 #### 4.1.4 Reinforcement Learning
 
+In reinforcement learning the learning system is called an **agent**, it observes the **environment** , selects and performs **actions**, gets **rewards** or **penalties** (negative rewards) based on the action it takes. It must then learn by itself what is the best strategy (based on rewards/penalties), this is called a **policy** to get the most reward over time. A policy defines what action an agent should choose when in a particular situation.
+For example, you have AlphaZero that learned how to play chess by playing games against itself, another example of this would be DeepMind's AlphaGo program that learned how to play Go using reinforcement learning.
 
 ### 4.2 Batch and Online Learning
 
+Another criteria used to classify machine learning is whether or nto system can learn incrementally from a stream of incoming data.
 
 #### 4.2.1 Batch Learning
 
+In batch learning, the system is **incapable of learning incrementally**; it must be trained using all the available data. This generally takes a lot of time and computing resources and is typically done offline hence it is also called ofline learning.
+First the system is trained on the complete set of data after which it is launched into production and does not learn anymore, instead it just applies what it has already learned. If you want a batch learning system to learn new data then it needs to learn about all the data from scratch we cannot just update it with the new data. This approach is very time consuming and during the training period the system will be offline. You could just to update the system to new data as and when needed by scheduling a time period when it will update.
+If the amount of data is large and the data often changes i.e. the system needs to keep adapting to new data then a more reactive solution is needed in these cases it is better to use a system that can incrementally learn.
 
 #### 4.2.2 Online Learning
 
+In online learning the system can **incrementally learn**  by feeding it data batches sequentially, either individually or in small groups called **mini-batches**. Each learning step is fast and cheap, so the system can learn about new data on the fly as it arrives.
+Online learning is great for systems that receive data as a continuous flow (e.g. stock prices) and need to adapt to change rapidly or autonomously. It is a good option if you have limited computing resources as the data is sent in mini-batches, and after it is learnt it is no longer needed and is discarded, this is unless you want to save it so that in a particular scenario you could roll back the system.
+Online learning algorithms can also be used to train systems on huge datasets that cannot fit in one machines main memory (this is called out-of-core training). The algorithm loads part of the data, runs a training step on that data, and repeats the process until it has run on all the data (out-of-core training is usually done offline however it is still incremental training).
+One important feature of online learning algorithms is the **learning rate** i.e. how fast the algorithms adapts to new and changing data. If a high learning rate is set it adapts to new data quickly but also tend to forget old data (spam filter will then forget about older spam data which we don't want). A low learning rate system will have more inertia that is it will learn slower, but it will be less sensitive to noise in the new data or to outliers.
+The big challenge with online learning is that if bad data is fed to the system the performance will gradually decline, if its a live system the clients will notice, to reduce the risk you need to monitor the system closely and switch off lerning or revert ot a previously working state if you detect a drop in performance. You may also want to monitor input data and react to abnormal data (using anomaly detection algorithm).
 
 ### 4.3 Instance Based vs Model Based
 
+Another criteria to categorize Machine Learning algorithms is by how they generalise. Most ML tasks are about making prediction. This means that they are given a number of training examples, the system needs to be able tp make good predictions for (generalise to) examples it has never seen before. Having a good performance measure on the training data is good but insufficient; the true goal is to perform well on new instances. 
+There are two main approaches to generalization: instance based and model based.
 
 #### 4.3.1 Instance Based Learning
 
-
+The concept of instance based learning is very simple, it is simply a method where the algorithm learns the example by heart. If you were to create a spam filter in this manner it would flag all the spam emails that are identical to the spam one's present in the dataset. This is not a very good solution as it only flags identical mails.
+Another method would be to use a measure of similarity using which we could find emails that are similar to the spam emails and hence flag them. THis could be done by comparing words and the frequency of words and other patterns. THis method is better at generalising.
+Hence, instance based learning is learning by heart and then generalising to new cases by using a similarity measure to compare them to learned examples or a subset of them.
 
 #### 4.3.2 Model Based Learning
 
+Another way to generalise from a set of examples is to build a model of these eamples and then use the model to make predictions. This is called model based learning. If we notice a linear relationship between attribute and target we decide to use a linear function this is called model selection. The model will have certain parameters. The value of the parameters are decided using a specific performance measure which we need to specify.
+You can either define a utility function(fitness function) that measures how good a model is, or you can define a cost function that measures how bad a model is. For Linear Regression we use a cost function that measures distance between models predictions and training examples, the goal is to minimise the distance(i.e. minimise the cost function).
+This is where the algorithm does its task, you feed it with the data, and it finds the parameters that ,ake tje model fit best to your data, After this you can use the model to make predictions. In summary, you must study the data, select a model, train it on training data, and apply the model to mae predictions on new cases. This is the typical workflow of an ML project. 
 
 ## 5. Main Challenges of Machine Learning
 
+The two main things that can go wrong in machine learning is selecting a **"bad algorithm"** and using **"bad data"**.  Examples of these are as follows: -
+
+### 5.1 Examples of Bad Data
+
+#### 5.1.1 Insufficient Quantity of Training Data
+
+One of the major drawbacks on machine learning is that it requires a very large amount of data to work effectively. For example if human can learn what a car is by looking at a few pictures but a machine learning algorithm will reuqire thousands of examples. Sometimes it is hard to find such large amounts of data ad not having sufficient quantities of data is one of the major reasons as to why ML may mnot give adequate results. 
+Some studies have even show that the amount of data is more important than the algorithm that is chosen. However, finding cheap extra training data is hard so this we must try to optimize everything including finding a good algorithm.
+
+#### 5.1.2 Nonrepresentative Training Data
+
+It is important to use training data that is representative of the new cases you want to generalise to, if the relationship of the features in training to the target is vastly different in the ne cases then the model will not perform properly. 
+Solving this is harder than it sounds: if the sample is too small you will have sampling noise (i.e. nonrepresentative data as a result of chance) but even very large samples can be nonrepresentative if the sampling method is flawed. This is called sampling bias.
+
+#### 5.1.3 Poor Quality Data
+
+IF the training data is full of errors, outliers and noise (e.g. due to poor quality measurements), it will make it harder for the system to detect underlying patterns and performance of the system will suffer. It is often well worth the time to spend cleaning up the data.
+A large amount of data scientist time goes in performing this task. The following are examples of when you would want to clean up training data: -
+1. If some instances are clearly outliers, it may help to simply discard them or try to fix the errors manually.
+2. If some instances are missing a feew features (e.g. 5% of customers didn't give their age), you must decide whether you want to ignore this attribute altogether, ignore these instances, fill in the missing values (e.g. with the median age), or train one model with the feature and one model without it.
+
+#### 5.1.4 Irrelevant Features
+
+An important thing to remember is "garbage in, garbage out". Your system will only be capable of learning if the training data contains enough relevant features and not too mny irrelevnt ones, A critical part of ML is coming up with a good set of features to train on. This process, called feature engineering, involves the following steps:
+1. **Feature selection**: selecting the most useful features to train on among existing features
+2. **Feature extraction:** combining existing features to produce a more useful one, as seen earlier dimensionality reduction algorithms can help with this.
+3. **Creating new features** by gathering new data
+
+### 5.2 Examples of Bad Algorithm
+
+
+#### 5.2.1 Overfitting the Training Data
+
+
+
+#### 5.2.2 Underfitting the Training Data
+
+
 
 ## 6. Testing and Validating
+
+
+
+### 6.1 Hyperparameter Tuning and Model Selection
+
+
+
+### 6.2 Data Mismatch
 
 
