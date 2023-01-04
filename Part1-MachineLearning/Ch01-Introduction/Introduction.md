@@ -194,7 +194,6 @@ An important thing to remember is "garbage in, garbage out". Your system will on
 
 ### 5.2 Examples of Bad Algorithm
 
-
 #### 5.2.1 Overfitting the Training Data
 
 
