@@ -21,11 +21,9 @@ The directory will also contain files on concepts, for example in regression we 
 | 4 | Regression | LinearRegression, SGDRegressor, RidgeRegression, LassoRegression, ElasticNet, LogisticRegression | Real Estate Prices, Medical Insurance |
 | 5 | SVM | LinearSVC, SVC, LinearSVR, SVR | MNIST, California Housing |
 | 6 | Decision Trees | DecisionTreeClassifier, DecisionTreeRegressor | Moons, Random Forest |
-| 7 | Ensemble Learning | | |
-| 8 | Dimensionality Reduction | | |
+| 7 | Ensemble Learning | RandomForestClassifier, VotingClassifier, BaggingClassifier, AdaBoostClassifier, GradientBoostingRegressor| MNIST, Stacking Ensemble|
+| 8 | Dimensionality Reduction | PCA, KernelPCA, LocallyLinearEmbedding| MNIST, t-SNE|
 | 9 | Unsupervised Learning | | |
-| 10 | Forecasting | ARIMA, SARIMA, SARIMAX, Prophet| |
-| 11 | Reinforcement Learning | | |
 | **Part 2**|  **Deep Learning** | |
 | 12 | Introduction | |
 | 13 | Deep Neural Networks | | |
