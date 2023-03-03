@@ -25,13 +25,13 @@ The directory will also contain files on concepts, for example in regression we 
 | 8 | Dimensionality Reduction | PCA, KernelPCA, LocallyLinearEmbedding| MNIST, t-SNE|
 | 9 | Unsupervised Learning | | |
 | **Part 2**|  **Deep Learning** | |
-| 12 | Introduction | |
-| 13 | Deep Neural Networks | | |
-| 14 | Proccessing Data with Tensorflow | | |
-| 15 | Deep Computer Vision | CNN | |
-| 16 | Processing Sequences | CNN, RNN | |
-| 17  | Natural Language Processing | RNN | |
-| 18 | Representation and Generative Learning | GAN | |
-| 19 | Reinforcement Learning | | |
+| 10 | Introduction | |
+| 11 | Deep Neural Networks | | |
+| 12 | Proccessing Data with Tensorflow | | |
+| 13 | Deep Computer Vision | CNN | |
+| 14 | Processing Sequences | CNN, RNN | |
+| 15  | Natural Language Processing | RNN | |
+| 16 | Representation and Generative Learning | GAN | |
+| 17 | Reinforcement Learning | | |
+| 19 | Forecasting | CNN, RNN, LSTM, N-BEATS | |
 | 20 | Deploying Models at Scale| | |
-| 21 | Forecasting | CNN, RNN, LSTM, N-BEATS | |
