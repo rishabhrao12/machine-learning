@@ -129,7 +129,7 @@ For example, you have AlphaZero that learned how to play chess by playing games 
 
 ### 4.2 Batch and Online Learning
 
-Another criteria used to classify machine learning is whether or nto system can learn incrementally from a stream of incoming data.
+Another criteria used to classify machine learning is whether or not system can learn incrementally from a stream of incoming data.
 
 #### 4.2.1 Batch Learning
 
@@ -153,7 +153,7 @@ There are two main approaches to generalization: instance based and model based.
 #### 4.3.1 Instance Based Learning
 
 The concept of instance based learning is very simple, it is simply a method where the algorithm learns the example by heart. If you were to create a spam filter in this manner it would flag all the spam emails that are identical to the spam one's present in the dataset. This is not a very good solution as it only flags identical mails.
-Another method would be to use a measure of similarity using which we could find emails that are similar to the spam emails and hence flag them. THis could be done by comparing words and the frequency of words and other patterns. THis method is better at generalising.
+Another method would be to use a measure of similarity using which we could find emails that are similar to the spam emails and hence flag them. This could be done by comparing words and the frequency of words and other patterns. THis method is better at generalising.
 Hence, instance based learning is learning by heart and then generalising to new cases by using a similarity measure to compare them to learned examples or a subset of them.
 
 #### 4.3.2 Model Based Learning
@@ -170,7 +170,7 @@ The two main things that can go wrong in machine learning is selecting a **"bad 
 
 #### 5.1.1 Insufficient Quantity of Training Data
 
-One of the major drawbacks on machine learning is that it requires a very large amount of data to work effectively. For example if human can learn what a car is by looking at a few pictures but a machine learning algorithm will require thousands of examples. Sometimes it is hard to find such large amounts of data ad not having sufficient quantities of data is one of the major reasons as to why ML may not give adequate results. 
+One of the major drawbacks on machine learning is that it requires a very large amount of data to work effectively. For example if human can learn what a car is by looking at a few pictures but a machine learning algorithm will require thousands of examples. Sometimes it is hard to find such large amounts of data and not having sufficient quantities of data is one of the major reasons as to why ML may not give adequate results. 
 Some studies have even showed that the amount of data is more important than the algorithm that is chosen. However, finding cheap extra training data is hard so this we must try to optimize everything including finding a good algorithm.
 
 #### 5.1.2 Nonrepresentative Training Data
@@ -180,7 +180,7 @@ Solving this is harder than it sounds: if the sample is too small you will have 
 
 #### 5.1.3 Poor Quality Data
 
-IF the training data is full of errors, outliers and noise (e.g. due to poor quality measurements), it will make it harder for the system to detect underlying patterns and performance of the system will suffer. It is often well worth the time to spend cleaning up the data.
+If the training data is full of errors, outliers and noise (e.g. due to poor quality measurements), it will make it harder for the system to detect underlying patterns and performance of the system will suffer. It is often well worth the time to spend cleaning up the data.
 A large amount of data scientist time goes in performing this task. The following are examples of when you would want to clean up training data: -
 1. If some instances are clearly outliers, it may help to simply discard them or try to fix the errors manually.
 2. If some instances are missing a few features (e.g. 5% of customers didn't give their age), you must decide whether you want to ignore this attribute altogether, ignore these instances, fill in the missing values (e.g. with the median age), or train one model with the feature and one model without it.
@@ -229,5 +229,5 @@ Each model is evaluated once per validation set after it is trained on the rest 
 ### 6.2 Data Mismatch
 
 In some cases the data you have in your dataset may be nonrepresentative of the actual data you will get. For example, if you use pictures of flowers downloaded from the internet and the user takes a photo using the apps camera and wants to make a prediction using it is possible that the photo may not be of the same type as the data you have. In the scenario it is a data mismatch.
-As a result of this you won't know whether your model is performing poorly because the model is bad or because there is a mismatch of data. A solution is to create a hold out set called the train-dev set. After the model is trained on the training set you can evaluate it on the train dev set. If it performs well, that meas it is not overfitting, if it performs poorly on the validation set then the problem must be coming rom data mismatch. 
+As a result of this you won't know whether your model is performing poorly because the model is bad or because there is a mismatch of data. A solution is to create a hold out set called the train-dev set. After the model is trained on the training set you can evaluate it on the train dev set. If it performs well, that meas it is not overfitting, if it performs poorly on the validation set then the problem must be coming from data mismatch. 
 You can try to tackle this by preprocessing the web images to make them look more like images taken by the mobile app, and then retrain the model. Conversely, if the model performs poorly on the train-dev set then it has overfitted the training set, so you should try to simplify or regularize the model, get more data, and clean up the training data (this method was suggested by Andrew Ng).
